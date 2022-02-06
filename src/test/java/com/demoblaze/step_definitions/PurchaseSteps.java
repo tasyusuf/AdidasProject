@@ -2,6 +2,7 @@ package com.demoblaze.step_definitions;
 
 import com.demoblaze.pages.PlaceOrderPage;
 import com.demoblaze.pages.ProductPage;
+import com.demoblaze.utilities.BrowserUtils;
 import com.demoblaze.utilities.ConfigurationReader;
 import com.demoblaze.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -14,6 +15,7 @@ public class PurchaseSteps {
 
     ProductPage productPage = new ProductPage();
     PlaceOrderPage placeOrderPage = new PlaceOrderPage();
+    int expectedPurchaseAmount;
 
     @Given("User is on the home page")
     public void user_is_on_the_home_page() {
@@ -36,6 +38,7 @@ public class PurchaseSteps {
     @And("User clicks on Place Order")
     public void userClicksOnPlaceOrder() {
         productPage.cart.click();
+        expectedPurchaseAmount = Integer.parseInt(productPage.totalPrice.getText());
         productPage.placeOrder.click();
     }
 
@@ -55,6 +58,8 @@ public class PurchaseSteps {
 
         int actualPurchaseAmount = Integer.parseInt(orderDetailsText.split("\n")[1].split(" ")[1]);
         System.out.println("actualPurchaseAmount = " + actualPurchaseAmount);
+
+        Assert.assertEquals("Price is not as expected", expectedPurchaseAmount, actualPurchaseAmount);
 
     }
 

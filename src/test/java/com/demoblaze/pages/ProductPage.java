@@ -39,4 +39,7 @@ public class ProductPage extends BasePage{
 
     @FindBy(xpath = "//button[.='Place Order']")
     public WebElement placeOrder;
+
+    @FindBy(id = "totalp")
+    public WebElement totalPrice;
 }
