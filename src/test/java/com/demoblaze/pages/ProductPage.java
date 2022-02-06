@@ -36,4 +36,7 @@ public class ProductPage extends BasePage{
         //wait.until(ExpectedConditions.alertIsPresent());
         alert.accept();
     }
+
+    @FindBy(xpath = "//button[.='Place Order']")
+    public WebElement placeOrder;
 }

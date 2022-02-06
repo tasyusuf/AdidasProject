@@ -7,3 +7,6 @@ Feature: Adidas Order Placement Functionalities
     When User adds "Sony vaio i5" from "Laptops"
     And User adds "Dell i7 8gb" from "Laptops"
     And User navigates to cart and removes "Dell i7 8gb"
+    And User clicks on Place Order
+    And User fills the form for order and clicks on purshase button
+    Then Order ID and order amount should be captured
